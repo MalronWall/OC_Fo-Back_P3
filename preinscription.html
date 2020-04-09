@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /><![endif]-->
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/default.css">
+    <title>Pré-inscription</title>
+</head>
+
+<body id="bodyPreIns">
+
+<header class="container-fluid">
+    <!-- Barre de navigation -->
+    <div class="row">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+                        Les Films de Plein Air
+                        <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Accueil</a>
+                        </li>
+                        <li>
+                            <a href="actualites.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; Actualités</a>
+                        </li>
+                        <li>
+                            <a href="films.html"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>&nbsp; Liste des films</a>
+                        </li>
+                        <li class="active">
+                            <a href="preinscription.html"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Pré-inscription<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li>
+                            <a href="contact.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp; Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="container fondSurPhoto">
+    <h3><strong>Pour se pré-inscrire à la projection d'un ou de plusieurs films, veuillez compléter ce formulaire ! :)</strong></h3>
+    <br/>
+
+    <label for="nom">* Nom :</label>
+    <input type="text" class="form-control" id="nom" placeholder="Votre nom">
+
+    <br/>
+
+    <label for="prenom">* Prénom :</label>
+    <input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+
+    <br/>
+
+    <label for="nb">* Nombre de personne :</label>
+    <input type="number" min="1" class="form-control" id="nb" placeholder="Le nombre de personne">
+
+    <br/>
+
+    <label for="jour">* Jour :</label>
+    <select id="jour" class="form-control" onclick="majHoraires(this.value);">
+        <option>--- La date ---</option>
+        <option value="5">Dimanche 05 août 2018</option>
+        <option value="6">Lundi 06 août 2018</option>
+        <option value="7">Mardi 07 août 2018</option>
+        <option value="8">Mercredi 08 août 2018</option>
+    </select>
+
+    <br/>
+
+    <label>* Horaire(s) :</label>
+    <div class="checkbox">
+        <input type="checkbox" id="check1"><label id="h18" for="check1">18h00</label>&nbsp;
+        <input type="checkbox" id="check2"><label id="h20" for="check2">20h00</label>&nbsp;
+        <input type="checkbox" id="check3"><label id="h22" for="check3">22h00</label>
+    </div>
+
+    <br/>
+
+    <label for="com">Commentaire :</label>
+    <textarea class="form-control animated" rows="10" id="com" placeholder="Votre contenu"></textarea>
+    * Les champs avec un astérisque sont obligatoires !
+
+    <br/>
+    <button type="button" class="btn btn-primary pull-right" onClick="alert('Réservation effectuée !')">Envoyer</button>
+</section>
+
+
+<!-- Footer -->
+<footer class="container-fluid text-center">
+    <div class="row">
+        <div class="col-xs-6">
+            <h5>
+                Rejoignez-nous sur nos réseaux sociaux !
+            </h5>
+            <p>
+                <a href="https://www.facebook.com"><i class="fa fa-facebook-official fa-2x reseauSocial" id="fb" aria-hidden="true"></i></a>
+                <a href="https://www.twitter.com"><i class="fa fa-twitter fa-2x reseauSocial" id="tw" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com"><i class="fa fa-linkedin fa-2x reseauSocial" id="li" aria-hidden="true"></i></a>
+                <a href="https://www.plus.google.com"><i class="fa fa-google-plus-official fa-2x reseauSocial" id="go" aria-hidden="true"></i></a>
+            </p>
+        </div>
+        <div class="col-xs-6">
+            <h5><i class="fa fa-copyright" aria-hidden="true"></i><a href="https://thibaut-tourte.com" id="nomCopyright">Thibaut Tourte</a>, 2018 - Tous droits réservés</h5>
+        </div>
+    </div>
+</footer>
+
+<script src="lib/bootstrap/js/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    /* Fonction mettant à jour les films selon la date */
+    function majHoraires(value) {
+        switch (value) {
+            case "5" :
+                document.getElementById("h18").innerHTML = "18h00 : Next";
+                document.getElementById("h20").innerHTML = "20h00 : The Prince of Homburg";
+                document.getElementById("h22").innerHTML = "22h00 : White House Down";
+                break;
+            case "6" :
+                document.getElementById("h18").innerHTML = "18h00 : Les Ames Vagabondes";
+                document.getElementById("h20").innerHTML = "20h00 : White House Down";
+                document.getElementById("h22").innerHTML = "22h00 : Petit Paysan";
+                break;
+            case "7" :
+                document.getElementById("h18").innerHTML = "18h00 : Petit Paysan";
+                document.getElementById("h20").innerHTML = "20h00 : X-Men Origins - Wolverine";
+                document.getElementById("h22").innerHTML = "22h00 : Les Ames Vagabondes";
+                break;
+            case "8" :
+                document.getElementById("h18").innerHTML = "18h00 : X-Men Origins - Wolverine";
+                document.getElementById("h20").innerHTML = "20h00 : Je suis une Légende <span class='glyphicon glyphicon-exclamation-sign alert-danger' aria-hidden='true'></span>";
+                document.getElementById("h22").innerHTML = "22h00 : The New Daugther <span class='glyphicon glyphicon-exclamation-sign alert-danger' aria-hidden='true'></span>";
+                break;
+            default :
+                document.getElementById("h18").innerHTML = "18h00";
+                document.getElementById("h20").innerHTML = "20h00";
+                document.getElementById("h22").innerHTML = "22h00";
+        }
+    }
+</script>
+
+</body>
+
+</html>
